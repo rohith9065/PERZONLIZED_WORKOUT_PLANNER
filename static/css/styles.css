@@ -1,0 +1,242 @@
+/* General Page Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55); /* Dark gradient */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ff5e62;
+}
+
+/* Hero Section */
+.hero {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.hero .button {
+    background: #ff5e62;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero .button:hover {
+    background: #fff;
+    color: #ff5e62;
+}
+
+/* Fitness Data Display */
+.fitness-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+    font-size: 1.2rem;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    position: relative;
+}
+
+.fitness-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.fitness-card h2 i {
+    margin-right: 10px;
+    color: #ff5e62;
+}
+
+.fitness-card p {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* Loader */
+.loader {
+    display: none;
+    border: 5px solid #fff;
+    border-top: 5px solid #ff5e62;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Section Styling */
+.section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #ff5e62;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section h2 i {
+    margin-right: 10px;
+}
+
+/* Diet Planner Cards */
+.diet-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+    font-size: 1.2rem;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    position: relative;
+}
+
+.diet-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.diet-card h3 i {
+    margin-right: 10px;
+    color: #ff5e62;
+}
+
+.diet-card p {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* Profile Page Styling */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.container form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1rem;
+}
+
+.container form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.container .button {
+    background: #ff5e62;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.container .button:hover {
+    background: #fff;
+    color: #ff5e62;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .fitness-card {
+        width: 90%;
+    }
+}
