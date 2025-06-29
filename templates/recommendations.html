@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Workout Plan</h1>
+
+        {% if recommendations.workout %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Workout</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>General Plan</td>
+                    <td>{{ recommendations.workout }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% else %}
+        <p>No workout recommendation available.</p>
+        {% endif %}
+
+        <div class="button-container">
+            <a href="{{ url_for('dashboard') }}">
+                <button>Back to Dashboard</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

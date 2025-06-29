@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker & Diet Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <h1>Fitness Dashboard</h1>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="#fitness">Workout</a>
+            <a href="{{ url_for('diet_planner') }}">Diet Planner</a>
+            <a href="{{ url_for('steps') }}">Steps</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('recommendations') }}">Workout</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Your Dashboard</h1>
+        <p>Track your fitness progress and plan your diet effectively.</p>
+        <a href="{{ url_for('steps') }}">
+            <button class="button">View Detailed Steps</button>
+        </a>
+    </div>
+
+    <!-- Fitness Tracker Section -->
+    <div id="fitness" class="section">
+        <h2><i class="fas fa-dumbbell"></i> Fitness Tracker</h2>
+        <div class="fitness-card">
+            <h3><i class="fas fa-walking"></i> Total Steps</h3>
+            <p id="totalSteps">Loading...</p>
+        </div>
+        <div class="fitness-card">
+            <h3><i class="fas fa-fire"></i> Total Calories Burned</h3>
+            <p id="totalCalories">Loading...</p>
+        </div>
+        <div class="fitness-card">
+            <h3><i class="fas fa-weight"></i> Weight</h3>
+            <p id="weight">Loading...</p>
+        </div>
+        <div class="fitness-card">
+            <h3><i class="fas fa-ruler-vertical"></i> Height</h3>
+            <p id="height">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Diet Planner Section -->
+    <div id="diet" class="section">
+        <h2><i class="fas fa-utensils"></i> Diet Planner</h2>
+        <div class="diet-card">
+            <h3><i class="fas fa-apple-alt"></i> Breakfast</h3>
+            <p>Plan your healthy breakfast here.</p>
+        </div>
+        <div class="diet-card">
+            <h3><i class="fas fa-hamburger"></i> Lunch</h3>
+            <p>Plan your nutritious lunch here.</p>
+        </div>
+        <div class="diet-card">
+            <h3><i class="fas fa-pizza-slice"></i> Dinner</h3>
+            <p>Plan your balanced dinner here.</p>
+        </div>
+        <div class="diet-card">
+            <h3><i class="fas fa-carrot"></i> Snacks</h3>
+            <p>Plan your healthy snacks here.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Fitness Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Fetch fitness data dynamically
+        fetch('/api/fitness')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("totalSteps").innerText = data.total_steps || "N/A";
+                document.getElementById("totalCalories").innerText = data.total_calories_burned || "N/A";
+                document.getElementById("weight").innerText = data.weight ? data.weight + " kg" : "N/A";
+                document.getElementById("height").innerText = data.height ? data.height + " cm" : "N/A";
+            })
+            .catch(err => {
+                console.error("Error fetching fitness data:", err);
+            });
+    </script>
+
+    <!-- Additional Buttons -->
+    <div class="additional-buttons">
+        <a href="{{ url_for('diet_planner') }}"><button>Diet Planner</button></a>
+        <a href="{{ url_for('diet_planner') }}">
+            <button>Diet Planner</button>
+        </a>
+        <a href="{{ url_for('workout_planner') }}">
+            <button>Workout Planner</button>
+        </a>
+        <a href="{{ url_for('recommendations') }}">
+            <button>Get Recommendations</button>
+        </a>
+        <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+    </div>
+</body>
+</html>

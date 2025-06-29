@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Diet Planner</h1>
+        {% if diet %}
+            <p><strong>Breakfast:</strong> {{ diet.breakfast }}</p>
+            <p><strong>Lunch:</strong> {{ diet.lunch }}</p>
+            <p><strong>Dinner:</strong> {{ diet.dinner }}</p>
+            <p><strong>Snacks:</strong> {{ diet.snacks }}</p>
+            <p><strong>Hydration:</strong> {{ diet.hydration }}</p>
+            {% if diet.bmi %}
+                <p><strong>BMI:</strong> {{ diet.bmi }} ({{ diet.bmi_status }})</p>
+            {% endif %}
+            {% if diet.adjustment %}
+                <p><strong>Adjustment:</strong> {{ diet.adjustment }}</p>
+            {% endif %}
+        {% else %}
+            <p>No diet recommendations available.</p>
+        {% endif %}
+        <a href="{{ url_for('dashboard') }}">
+            <button>Back to Dashboard</button>
+        </a>
+    </div>
+</body>
+</html>

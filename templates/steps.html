@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Fitness Dashboard</h1>
+        <p>Here is your fitness data for the last 7 days:</p>
+
+        <div class="fitness-card">
+            <h2>Total Steps</h2>
+            <p id="totalSteps">Loading...</p>
+        </div>
+
+        <div class="fitness-card">
+            <h2>Daily Steps</h2>
+            <p id="dailySteps">Loading...</p>
+        </div>
+
+        <div class="fitness-card">
+            <h2>Total Calories Burned</h2>
+            <p id="totalCalories">Loading...</p>
+        </div>
+
+        <div class="fitness-card">
+            <h2>Daily Calories Burned</h2>
+            <p id="dailyCalories">Loading...</p>
+        </div>
+
+        <div class="fitness-card">
+            <h2>Weight</h2>
+            <p id="weight">Loading...</p>
+        </div>
+
+        <div class="fitness-card">
+            <h2>Height</h2>
+            <p id="height">Loading...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Fitness Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        fetch('/api/fitness')
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById("totalSteps").innerText = "Error: " + data.error;
+                    return;
+                }
+
+                document.getElementById("totalSteps").innerText = data.total_steps;
+                document.getElementById("dailySteps").innerText = data.daily_steps.join(', ');
+                document.getElementById("totalCalories").innerText = data.total_calories_burned.toFixed(2);
+                document.getElementById("dailyCalories").innerText = data.daily_calories_burned.map(c => c.toFixed(2)).join(', ');
+                document.getElementById("weight").innerText = data.weight ? data.weight.toFixed(2) + " kg" : "N/A";
+                document.getElementById("height").innerText = data.height ? data.height.toFixed(2) + " meters" : "N/A";
+            })
+            .catch(err => {
+                document.getElementById("totalSteps").innerText = "Error loading data";
+                console.error("Fetch error:", err);
+            });
+    </script>
+</body>
+</html>
